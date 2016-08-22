@@ -1,0 +1,440 @@
+fileFormatVersion: 2
+guid: 6dc44678766462449a0fb391e282e087
+timeCreated: 1471759941
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 00
+    21300002: 01
+    21300004: 02
+    21300006: 03
+    21300008: 04
+    21300010: 05
+    21300012: PhiliaTalkAnimation_6
+    21300014: 06
+    21300016: PhiliaTalkAnimation_8
+    21300018: 07
+    21300020: PhiliaTalkAnimation_10
+    21300022: 08
+    21300024: PhiliaTalkAnimation_12
+    21300026: 09
+    21300028: 10
+    21300030: 11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: 00
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 555
+        width: 179
+        height: 463
+      alignment: 9
+      pivot: {x: 0.54591244, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.109161, y: 232.25}
+        - {x: -49.10916, y: 217.25}
+        - {x: -49.10916, y: 13.25}
+        - {x: -48.10916, y: 0.25}
+        - {x: -11.109161, y: 0.25}
+        - {x: -9.109161, y: 5.25}
+        - {x: -0.10916138, y: 0.25}
+        - {x: 23.890839, y: 0.25}
+        - {x: 40.89084, y: 54.25}
+        - {x: 40.89084, y: 211.25}
+        - {x: 9.890839, y: 232.25}
+      - - {x: -9.109161, y: 5.25}
+        - {x: -9.109161, y: 2.25}
+        - {x: -8.109161, y: 0.25}
+        - {x: -5.1091614, y: 0.25}
+        - {x: -2.1091614, y: 3.25}
+        - {x: -3.1091614, y: 6.25}
+        - {x: -7.1091614, y: 6.25}
+    - name: 01
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 557
+        width: 188
+        height: 459
+      alignment: 9
+      pivot: {x: 0.54253304, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1.0018921, y: 230.25}
+        - {x: -8.998108, y: 230.25}
+        - {x: -31.998108, y: 214.25}
+        - {x: -46.998108, y: 194.25}
+        - {x: -50.998108, y: 174.25}
+        - {x: -50.998108, y: 62.25}
+        - {x: -24.998108, y: 0.25}
+        - {x: 25.001892, y: 0.25}
+        - {x: 44.001892, y: 66.25}
+        - {x: 44.001892, y: 178.25}
+        - {x: 36.001892, y: 211.25}
+    - name: 02
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 557
+        width: 211
+        height: 456
+      alignment: 9
+      pivot: {x: 0.5336856, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.446167, y: 229}
+        - {x: -21.553833, y: 229}
+        - {x: -52.553833, y: 208}
+        - {x: -56.553833, y: 189}
+        - {x: -56.553833, y: 70}
+        - {x: -18.553833, y: 0}
+        - {x: 21.446167, y: 0}
+        - {x: 49.446167, y: 57}
+        - {x: 49.446167, y: 162}
+        - {x: 44.446167, y: 199}
+    - name: 03
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 559
+        width: 212
+        height: 452
+      alignment: 9
+      pivot: {x: 0.5167634, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25.223083, y: 227}
+        - {x: -37.776917, y: 227}
+        - {x: -54.776917, y: 190}
+        - {x: -54.776917, y: 63}
+        - {x: -18.776917, y: 0}
+        - {x: 33.223083, y: 0}
+        - {x: 52.223083, y: 76}
+        - {x: 52.223083, y: 160}
+        - {x: 51.223083, y: 197}
+    - name: 04
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 568
+        width: 209
+        height: 451
+      alignment: 9
+      pivot: {x: 0.5106277, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.110596, y: 225.75}
+        - {x: -53.110596, y: 186.75}
+        - {x: -53.110596, y: 29.75}
+        - {x: -30.110596, y: -0.25}
+        - {x: -8.110596, y: -0.25}
+        - {x: -6.1105957, y: 7.75}
+        - {x: 7.8894043, y: -0.25}
+        - {x: 20.889404, y: -0.25}
+        - {x: 50.889404, y: 22.75}
+        - {x: 51.889404, y: 27.75}
+        - {x: 51.889404, y: 225.75}
+      - - {x: 47.889404, y: 116.75}
+        - {x: 49.889404, y: 113.75}
+        - {x: 51.889404, y: 114.75}
+        - {x: 51.889404, y: 117.75}
+        - {x: 49.889404, y: 118.75}
+    - name: 05
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 573
+        width: 218
+        height: 448
+      alignment: 9
+      pivot: {x: 0.53566134, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.612915, y: 225}
+        - {x: -12.387085, y: 225}
+        - {x: -48.387085, y: 204}
+        - {x: -55.387085, y: 159}
+        - {x: -55.387085, y: 74}
+        - {x: -23.387085, y: 0}
+        - {x: 23.612915, y: 0}
+        - {x: 50.612915, y: 55}
+        - {x: 50.612915, y: 141}
+        - {x: 35.612915, y: 206}
+      - - {x: -58.387085, y: 88}
+        - {x: -56.387085, y: 88}
+        - {x: -54.387085, y: 90}
+        - {x: -55.387085, y: 93}
+        - {x: -58.387085, y: 93}
+    - name: PhiliaTalkAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 766
+        width: 6
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: 06
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 83
+        width: 224
+        height: 449
+      alignment: 9
+      pivot: {x: 0.5174919, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15.040909, y: 225.25}
+        - {x: -31.959091, y: 225.25}
+        - {x: -46.95909, y: 221.25}
+        - {x: -54.95909, y: 180.25}
+        - {x: -54.95909, y: 41.25}
+        - {x: -31.959091, y: 0.25}
+        - {x: 34.04091, y: 0.25}
+        - {x: 53.04091, y: 77.25}
+        - {x: 53.04091, y: 117.25}
+        - {x: 33.04091, y: 221.25}
+      - - {x: -54.95909, y: 88.25}
+        - {x: -54.95909, y: 91.25}
+        - {x: -57.95909, y: 92.25}
+        - {x: -57.95909, y: 87.25}
+      - - {x: 51.04091, y: 114.25}
+        - {x: 53.04091, y: 112.25}
+        - {x: 54.04091, y: 112.25}
+        - {x: 54.04091, y: 117.25}
+        - {x: 52.04091, y: 117.25}
+    - name: PhiliaTalkAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 277
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: 07
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 83
+        width: 210
+        height: 448
+      alignment: 9
+      pivot: {x: 0.5128276, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 52.153107, y: 39}
+        - {x: 52.153107, y: 177}
+        - {x: 26.153107, y: 225}
+        - {x: -34.846893, y: 225}
+        - {x: -49.846893, y: 207}
+        - {x: -53.846893, y: 182}
+        - {x: -53.846893, y: 72}
+        - {x: -18.846893, y: 0}
+        - {x: -8.846893, y: 0}
+        - {x: -6.8468933, y: 8}
+        - {x: 10.153107, y: 0}
+        - {x: 21.153107, y: 0}
+      - - {x: 47.153107, y: 112}
+        - {x: 50.153107, y: 113}
+        - {x: 50.153107, y: 116}
+        - {x: 47.153107, y: 117}
+        - {x: 45.153107, y: 115}
+    - name: PhiliaTalkAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 277
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: 08
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 77
+        width: 207
+        height: 456
+      alignment: 9
+      pivot: {x: 0.5031399, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -0.8249817, y: 229}
+        - {x: -30.824982, y: 229}
+        - {x: -51.82498, y: 190}
+        - {x: -51.82498, y: 85}
+        - {x: -46.82498, y: 83}
+        - {x: -37.82498, y: 55}
+        - {x: -16.824982, y: 0}
+        - {x: 34.17502, y: 0}
+        - {x: 52.17502, y: 48}
+        - {x: 52.17502, y: 158}
+        - {x: 37.17502, y: 210}
+      - - {x: -51.82498, y: 99}
+        - {x: -48.82498, y: 100}
+        - {x: -48.82498, y: 103}
+        - {x: -50.82498, y: 105}
+        - {x: -51.82498, y: 105}
+      - - {x: 49.17502, y: 116}
+        - {x: 51.17502, y: 114}
+        - {x: 52.17502, y: 114}
+        - {x: 52.17502, y: 120}
+        - {x: 49.17502, y: 119}
+    - name: PhiliaTalkAnimation_12
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 275
+        width: 5
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: 09
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 69
+        width: 208
+        height: 462
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31, y: 227}
+        - {x: 7, y: 232}
+        - {x: -44, y: 232}
+        - {x: -52, y: 200}
+        - {x: -52, y: 48}
+        - {x: -19, y: 1}
+        - {x: -18, y: 0}
+        - {x: 22, y: 0}
+        - {x: 29, y: 3}
+        - {x: 53, y: 52}
+        - {x: 53, y: 152}
+      - - {x: -52, y: 102}
+        - {x: -49, y: 103}
+        - {x: -49, y: 107}
+        - {x: -51, y: 109}
+        - {x: -52, y: 109}
+      - - {x: 36, y: 134}
+        - {x: 38, y: 132}
+        - {x: 41, y: 133}
+        - {x: 41, y: 136}
+        - {x: 39, y: 138}
+        - {x: 36, y: 137}
+    - name: 10
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 71
+        width: 207
+        height: 458
+      alignment: 9
+      pivot: {x: 0.49686038, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11.824951, y: 230}
+        - {x: -18.175049, y: 230}
+        - {x: -39.17505, y: 209}
+        - {x: -51.17505, y: 170}
+        - {x: -51.17505, y: 77}
+        - {x: -50.17505, y: 75}
+        - {x: -17.175049, y: 0}
+        - {x: -10.175049, y: 0}
+        - {x: -7.175049, y: 5}
+        - {x: 6.824951, y: 0}
+        - {x: 21.824951, y: 0}
+        - {x: 52.82495, y: 80}
+        - {x: 52.82495, y: 131}
+        - {x: 44.82495, y: 222}
+      - - {x: 48.82495, y: 125}
+        - {x: 49.82495, y: 122}
+        - {x: 52.82495, y: 122}
+        - {x: 52.82495, y: 127}
+        - {x: 50.82495, y: 127}
+    - name: 11
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 79
+        width: 213
+        height: 456
+      alignment: 9
+      pivot: {x: 0.52135944, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35.22522, y: 85}
+        - {x: 51.22522, y: 82}
+        - {x: 51.22522, y: 133}
+        - {x: 41.22522, y: 204}
+        - {x: 6.2252197, y: 229}
+        - {x: -27.77478, y: 229}
+        - {x: -55.77478, y: 196}
+        - {x: -55.77478, y: 79}
+        - {x: -20.77478, y: 0}
+        - {x: 21.22522, y: 0}
+        - {x: 22.22522, y: 1}
+        - {x: 40.22522, y: 68}
+        - {x: 33.22522, y: 85}
+        - {x: 32.22522, y: 87}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
