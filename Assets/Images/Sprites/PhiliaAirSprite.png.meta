@@ -1,0 +1,218 @@
+fileFormatVersion: 2
+guid: a30f43e9270002843a0ac51ed1d857fb
+timeCreated: 1471928970
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PhiliaAirSprite_0
+    21300002: 00
+    21300004: 01
+    21300006: 02
+    21300008: 03
+    21300010: 04
+    21300012: PhiliaAirSprite_6
+    21300014: PhiliaAirSprite_7
+    21300016: 05
+    21300018: 06
+    21300020: PhiliaAirSprite_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PhiliaAirSprite_0
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 985
+        width: 7
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 00
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 531
+        width: 222
+        height: 426
+      alignment: 9
+      pivot: {x: 0.48405105, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 01
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 553
+        width: 220
+        height: 415
+      alignment: 9
+      pivot: {x: 0.47795743, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 02
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 542
+        width: 220
+        height: 419
+      alignment: 9
+      pivot: {x: 0.4118297, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 03
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 557
+        width: 214
+        height: 414
+      alignment: 9
+      pivot: {x: 0.43705392, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 04
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 555
+        width: 218
+        height: 413
+      alignment: 9
+      pivot: {x: 0.44809547, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PhiliaAirSprite_6
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 539
+        width: 8
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PhiliaAirSprite_7
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 542
+        width: 6
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 05
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 55
+        width: 225
+        height: 426
+      alignment: 9
+      pivot: {x: 0.46763775, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 06
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 66
+        width: 219
+        height: 407
+      alignment: 9
+      pivot: {x: 0.46305674, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PhiliaAirSprite_10
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 47
+        width: 9
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

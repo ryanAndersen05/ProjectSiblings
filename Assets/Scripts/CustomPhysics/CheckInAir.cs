@@ -6,6 +6,20 @@ public class CheckInAir : MonoBehaviour {
     public bool lockInAir = false;
     public float checkDistance = .01f;
     public Transform[] checkPositions = new Transform[3];
+    Animator anim;
+
+    void Start()
+    {
+        anim = transform.parent.GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        if (anim != null)
+        {
+            anim.SetBool("InAir", inAir);
+        }
+    }
 
     void FixedUpdate()
     {
