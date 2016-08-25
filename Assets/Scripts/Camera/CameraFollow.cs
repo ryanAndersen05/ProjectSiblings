@@ -11,7 +11,8 @@ public class CameraFollow : MonoBehaviour {
 
     void Start()
     {
-        currentTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        currentTarget = transform.parent;
+        transform.parent = null;
     }
 
     void Update()
