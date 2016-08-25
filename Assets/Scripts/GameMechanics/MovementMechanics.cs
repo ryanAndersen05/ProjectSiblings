@@ -40,7 +40,7 @@ public class MovementMechanics : MonoBehaviour {
         }
         currentSpeed = Mathf.MoveTowards(rigid.velocity.x, goalSpeed, Time.fixedDeltaTime * acceleration);
         rigid.velocity = new Vector2(currentSpeed, rigid.velocity.y);
-        print(rigid.velocity);
+        //print(rigid.velocity);
     }
 
     void Update()

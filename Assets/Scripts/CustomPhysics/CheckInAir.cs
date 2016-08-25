@@ -5,6 +5,7 @@ public class CheckInAir : MonoBehaviour {
     public bool inAir = false;
     public bool lockInAir = false;
     public float checkDistance = .01f;
+    public string[] ignoreLayers = new string[0];
     public Transform[] checkPositions = new Transform[3];
     Animator anim;
 
@@ -19,10 +20,6 @@ public class CheckInAir : MonoBehaviour {
         {
             anim.SetBool("InAir", inAir);
         }
-    }
-
-    void FixedUpdate()
-    {
         if (lockInAir) return;
         checkInAir();
     }
@@ -32,9 +29,17 @@ public class CheckInAir : MonoBehaviour {
         inAir = true;
         foreach(Transform t in checkPositions)
         {
+            RaycastHit2D hit;
             Ray2D r = new Ray2D(t.position, Vector2.down);
-            if (Physics2D.Raycast(r.origin, r.direction, checkDistance))
+            int layerMask = -1;
+            foreach (string l in ignoreLayers)
             {
+                layerMask -= 1 << LayerMask.NameToLayer(l);
+            }
+            hit = Physics2D.Raycast(r.origin, r.direction, checkDistance, layerMask);
+            if (hit)
+            {
+                //print(hit.transform.name);
                 inAir = false;
                 return;
             }
