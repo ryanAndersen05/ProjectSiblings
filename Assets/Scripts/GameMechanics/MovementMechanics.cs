@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MovementMechanics : MonoBehaviour {
-    public float maxSpeed = 1;
+    public float walkSpeed = 3;
     public float acceleration = 3;
     public bool updateSpeed = true;
 
@@ -10,22 +10,37 @@ public class MovementMechanics : MonoBehaviour {
     float hInput;
     Rigidbody2D rigid;
     Animator anim;
+    CheckInAir checkInAir;
 
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
+        checkInAir = GetComponentInChildren<CheckInAir>();
     }
 
     
     void FixedUpdate()
     {
-        if (!updateSpeed)
+        if (!updateSpeed || checkInAir.inAir)
         {
             return;
         }
-        currentSpeed = Mathf.MoveTowards(rigid.velocity.x, hInput * maxSpeed, Time.fixedDeltaTime * acceleration);
+        float goalSpeed = 0;
+        if (Mathf.Abs(hInput) > 0)
+        {
+            if (hInput > 0)
+            {
+                goalSpeed = walkSpeed;
+            }
+            else
+            {
+                goalSpeed = -walkSpeed;
+            }
+        }
+        currentSpeed = Mathf.MoveTowards(rigid.velocity.x, goalSpeed, Time.fixedDeltaTime * acceleration);
         rigid.velocity = new Vector2(currentSpeed, rigid.velocity.y);
+        print(rigid.velocity);
     }
 
     void Update()
