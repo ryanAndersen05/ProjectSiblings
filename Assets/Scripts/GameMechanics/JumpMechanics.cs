@@ -27,7 +27,7 @@ public class JumpMechanics : MonoBehaviour {
         {
             anim.SetFloat("FallingVelocity", rigid.velocity.y);
         }
-        
+                
     }
 
     void FixedUpdate()
