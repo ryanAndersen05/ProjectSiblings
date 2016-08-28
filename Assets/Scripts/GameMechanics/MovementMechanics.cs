@@ -5,6 +5,7 @@ public class MovementMechanics : MonoBehaviour {
     public float walkSpeed = 3;
     public float acceleration = 3;
     public bool updateSpeed = true;
+    public bool updateInput = true;
 
     float currentSpeed = 0;
     float hInput;
@@ -28,6 +29,7 @@ public class MovementMechanics : MonoBehaviour {
         {
             return;
         }
+        if (!updateInput) hInput = 0;
         float goalSpeed = 0;
         if (Mathf.Abs(hInput) > 0)
         {
