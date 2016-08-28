@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
-    public float xOffset;
-    public float yOffset;
+    private float xOffset;
+    private float yOffset;
     public float acceleration = 5;
 
     Transform currentTarget;
@@ -11,8 +11,11 @@ public class CameraFollow : MonoBehaviour {
 
     void Start()
     {
+        yOffset = transform.localPosition.y;
+        xOffset = transform.localPosition.x;
         currentTarget = transform.parent;
         transform.parent = null;
+
     }
 
     void Update()

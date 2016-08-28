@@ -41,12 +41,15 @@ public class JumpMechanics : MonoBehaviour {
         rigid.velocity = new Vector2(xVel, rigid.velocity.y);
     }
 
-    public void activateJump(bool jumpInput)
+    public bool activateJump(bool jumpInput)
     {
-        if (jumpDisabled) return;
+        if (jumpDisabled) return false;
         if (jumpInput && !checkInAir.inAir)
         {
+            rigid.velocity = new Vector2(rigid.velocity.x, 0);
             rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            return true;
         }
+        return false;
     }
 }

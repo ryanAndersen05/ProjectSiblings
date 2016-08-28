@@ -9,6 +9,7 @@ public class MovementMechanics : MonoBehaviour {
     float currentSpeed = 0;
     float hInput;
     Rigidbody2D rigid;
+    FlipSprite fSprite;
     Animator anim;
     CheckInAir checkInAir;
 
@@ -17,6 +18,7 @@ public class MovementMechanics : MonoBehaviour {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         checkInAir = GetComponentInChildren<CheckInAir>();
+        fSprite = GetComponent<FlipSprite>();
     }
 
     
@@ -46,6 +48,14 @@ public class MovementMechanics : MonoBehaviour {
     void Update()
     {
         anim.SetFloat("Speed", Mathf.Abs(hInput));
+        if (hInput < 0)
+        {
+            fSprite.isRight = false;
+        }
+        else if (hInput > 0)
+        {
+            fSprite.isRight = true;
+        }
     }
 
     /// <summary>

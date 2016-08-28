@@ -4,11 +4,9 @@ using System.Collections;
 public class FlipSprite : MonoBehaviour {
     public bool isRight = false;
     public bool lockDirection = false;
-    MovementMechanics mMechanics;
 
     void Start()
     {
-        mMechanics = GetComponent<MovementMechanics>();
         updateDirection();
     }
 
@@ -18,22 +16,10 @@ public class FlipSprite : MonoBehaviour {
         {
             return;
         }
-        float hInput = mMechanics.getCurrentHInput();
-        if (Mathf.Abs(hInput) < .01f) {
-            return;
-        }
-        if (hInput < 0)
-        {
-            isRight = false;
-        }
-        else
-        {
-            isRight = true;
-        }
         updateDirection();
     }
 
-    void updateDirection()
+    public void updateDirection()
     {
        
         if (isRight)
