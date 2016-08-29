@@ -2,26 +2,26 @@
 using System.Collections;
 
 public class Dialogue : MonoBehaviour {
-    public float maxBuffer = .3f;
-    float dialogueBuffer = 0;
     NPCDialogue npcDialogue;
     FlipSprite fSprite;
     Rigidbody2D rigid;
     Animator anim;
+    DialogueUI dialogueUI;
 
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         fSprite = GetComponent<FlipSprite>();
+        dialogueUI = GameObject.FindObjectOfType<DialogueUI>();
     }
 
 
     public bool activatedDialogue(bool buttonDown)
     {
-        if (buttonDown && npcDialogue)
+        if (buttonDown && npcDialogue && !dialogueUI.isActive)
         {
-            
+            dialogueUI.activateConversation(npcDialogue.dialogueFileName);
             float direction = transform.position.x - npcDialogue.transform.position.x;
             if (direction > 0)
             {
@@ -35,21 +35,12 @@ public class Dialogue : MonoBehaviour {
             anim.SetTrigger("Dialogue");
             return true;
         }
-        if (buttonDown) dialogueBuffer = maxBuffer;
         return false;
     }
 
     void Update()
     {
-        if (dialogueBuffer > 0)
-        {
-            activatedDialogue(true);
-        }
-        else
-        {
-            anim.ResetTrigger("Dialogue");
-        }
-        dialogueBuffer = Mathf.MoveTowards(dialogueBuffer, 0, Time.deltaTime);
+
     }
 
     void OnTriggerEnter2D(Collider2D collider)

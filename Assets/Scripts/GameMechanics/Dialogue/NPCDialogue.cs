@@ -7,6 +7,11 @@ public class NPCDialogue : MonoBehaviour {
 
     List<Collider2D> allColliders = new List<Collider2D>();
 
+    void Start()
+    {
+        dialogueFileName = "/DialogueScripts/" + dialogueFileName;
+    }
+
     void OnTriggerEnter2D (Collider2D collider)
     {
         allColliders.Add(collider);

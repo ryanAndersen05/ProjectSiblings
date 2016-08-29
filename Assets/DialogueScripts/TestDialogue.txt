@@ -1,0 +1,9 @@
+Philia|You have a lot of explaining to do
+Charlotte|Me? What did I do?
+Philia|You know what you did. Don't play dumb with me.
+Charlotte|I really don't, but I'm sorry about whatever I did.
+Philia|Well I'm gonna remind you of what you did, since you're so persistent that you're lost.
+Charlotte|Please, I would like to make it right again.
+Philia|You ate the last cookie! I specifically told you that one was mine!
+Charlotte|You can't claim a cookie Philia. Its fair game to whoever wants it.
+Philia|You... bitch!

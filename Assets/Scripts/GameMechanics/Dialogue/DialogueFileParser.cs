@@ -11,7 +11,7 @@ public class DialogueFileParser {
         List<DialogueNode> dNodes = new List<DialogueNode>();
         try
         {
-            StreamReader reader = new StreamReader(fileName, Encoding.Default);
+            StreamReader reader = new StreamReader(Application.dataPath + fileName, Encoding.Default);
             string line = reader.ReadLine();
             while (line != null)
             {
@@ -24,7 +24,7 @@ public class DialogueFileParser {
             }
         } catch
         {
-            Debug.Log("The file " + fileName + " is invlid");
+            Debug.Log("The file " + fileName + " is invalid");
         }
         DialogueNode[] allDialogueNodes = new DialogueNode[dNodes.Count];
         int i = 0;
