@@ -4,14 +4,12 @@ using System.Collections;
 public class Dialogue : MonoBehaviour {
     NPCDialogue npcDialogue;
     FlipSprite fSprite;
-    Rigidbody2D rigid;
     Animator anim;
     DialogueUI dialogueUI;
 
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        rigid = GetComponent<Rigidbody2D>();
         fSprite = GetComponent<FlipSprite>();
         dialogueUI = GameObject.FindObjectOfType<DialogueUI>();
     }
