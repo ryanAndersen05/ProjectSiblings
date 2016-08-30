@@ -22,6 +22,7 @@ public class Dialogue : MonoBehaviour {
         if (buttonDown && npcDialogue && !dialogueUI.isActive)
         {
             dialogueUI.activateConversation(npcDialogue.dialogueFileName);
+            
             float direction = transform.position.x - npcDialogue.transform.position.x;
             if (direction > 0)
             {
