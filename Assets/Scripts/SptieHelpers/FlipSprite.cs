@@ -4,6 +4,7 @@ using System.Collections;
 public class FlipSprite : MonoBehaviour {
     public bool isRight = false;
     public bool lockDirection = false;
+    bool previousIsRight = false;
 
     void Start()
     {
@@ -14,9 +15,12 @@ public class FlipSprite : MonoBehaviour {
     {
         if (lockDirection)
         {
+            isRight = previousIsRight;
             return;
         }
+        previousIsRight = isRight;
         updateDirection();
+
     }
 
     public void updateDirection()
