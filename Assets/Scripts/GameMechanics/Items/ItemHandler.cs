@@ -2,46 +2,85 @@
 using System.Collections.Generic;
 
 public class ItemHandler : MonoBehaviour {
-    public int bagHeight = 1;
-    public int bagWidth = 1;
-    ItemNode[,] itemArray = new ItemNode[1, 1];
+    List<ItemNode> currentHeldItems = new List<ItemNode>();
+    int currentItemSelected = 0;
 
-    void Start()
+    
+
+    public bool addItems(Item item, int count = 1)
     {
-        if (bagHeight > 1 || bagWidth > 1)
+        int itemIndex = -1;
+        int checkIndex = 0;
+        foreach (ItemNode i in currentHeldItems)
         {
-            itemArray = new ItemNode[bagWidth, bagHeight];
+            if (i.item.itemName == item.itemName)
+            {
+                itemIndex = checkIndex;
+                break;
+            }
+            checkIndex++;
         }
+        if (itemIndex < 0)
+        {
+            itemIndex = currentHeldItems.Count;
+            currentHeldItems.Add(new ItemNode(item));
+        }
+        bool successfullyAdded = false;
+        for (int i = 0; i < count; i++)
+        {
+            if (currentHeldItems[itemIndex].addItem())
+            {
+                successfullyAdded = true;
+            }
+            else break;
+        }
+        return successfullyAdded;
     }
 
-    public bool addItem(Item i)
+    public bool useItem()
     {
+        if (currentItemSelected >= currentHeldItems.Count) return false;
+        
 
         return true;
     }
 
-    private ItemNode getItemAt(int i)
+    public void selectItem(int index)
     {
-        int x = 0;
-        int y = 0;
-        while ((y + 1) * bagWidth < i)
+        if (currentHeldItems.Count <= 1) return;
+        while (index < 0)
         {
-            y++;
+            index += currentHeldItems.Count;
         }
-        x = i - (y * bagWidth);
-        return itemArray[x, y];
+        currentItemSelected = index % currentHeldItems.Count;
     }
+
+    public void selectItemUp()
+    {
+        selectItem(currentItemSelected++);
+    }
+
+    public void selectItemDown()
+    {
+        selectItem(currentItemSelected--);
+    }
+
+
+
 
     private class ItemNode
     {
-        public int x;
-        public int y;
         public int currentStack;
         public Item item;
         
-        public bool addItem(Item i)
+        public ItemNode(Item item)
         {
-            if (currentStack < i.maxPerStack)
+            this.item = item;
+        }
+
+        public bool addItem()
+        {
+            if (currentStack < item.maxPerStack)
             {
                 return false;
             }
@@ -49,12 +88,10 @@ public class ItemHandler : MonoBehaviour {
             return true;
         }
 
-        public bool canUseItem()
+        public bool useItem()
         {
-            if (currentStack <= 0)
-            {
-                return false;
-            }
+            if (currentStack <= 0) return false;
+            currentStack--;
             return true;
         }
     }
