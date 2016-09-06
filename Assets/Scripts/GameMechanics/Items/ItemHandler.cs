@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 
 public class ItemHandler : MonoBehaviour {
+    public Item[] initialHeldItems = new Item[0];
+
     List<ItemNode> currentHeldItems = new List<ItemNode>();
     int currentItemSelected = 0;
 
     
+    void Start()
+    {
+        foreach (Item i in initialHeldItems)
+        {
+            addItems(i);
+        }
+        
+    }
 
     public bool addItems(Item item, int count = 1)
     {
@@ -37,12 +47,16 @@ public class ItemHandler : MonoBehaviour {
         return successfullyAdded;
     }
 
-    public bool useItem()
+    public Item useItem()
     {
-        if (currentItemSelected >= currentHeldItems.Count) return false;
-        
-
-        return true;
+        if (currentItemSelected >= currentHeldItems.Count || currentItemSelected < 0) return null;
+        ItemNode i = currentHeldItems[currentItemSelected];
+        i.useItem();
+        if (i.currentStack <= 0)
+        {
+            currentHeldItems.Remove(i);
+        }
+        return i.item;
     }
 
     public void selectItem(int index)
@@ -57,16 +71,19 @@ public class ItemHandler : MonoBehaviour {
 
     public void selectItemUp()
     {
-        selectItem(currentItemSelected++);
+        selectItem(++currentItemSelected);
     }
 
     public void selectItemDown()
     {
-        selectItem(currentItemSelected--);
+        selectItem(--currentItemSelected);
     }
 
-
-
+    public Item getCurrentItem()
+    {
+        if (currentItemSelected < 0 || currentItemSelected >= currentHeldItems.Count) return null;
+        else return currentHeldItems[currentItemSelected].item;
+    }
 
     private class ItemNode
     {

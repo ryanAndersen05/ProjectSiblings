@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
+    public bool disableControls;
     MovementMechanics mMechanics;
     JumpMechanics jMechanics;
     Dialogue dialogue;
@@ -19,6 +20,10 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
+        if (disableControls)
+        {
+            return;
+        }
         float hInput = Input.GetAxisRaw("Horizontal");
         bInputs.resetBuffer("Jump");
         bInputs.resetBuffer("Action");
