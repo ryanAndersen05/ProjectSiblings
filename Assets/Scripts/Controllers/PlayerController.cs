@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour {
     JumpMechanics jMechanics;
     Dialogue dialogue;
     BufferedInputs bInputs;
+    CustomGravity cGravity;
 
     void Start()
     {
         mMechanics = GetComponent<MovementMechanics>();
         dialogue = GetComponent<Dialogue>();
         jMechanics = GetComponent<JumpMechanics>();
+        cGravity = GetComponent<CustomGravity>();
         bInputs = new BufferedInputs();
         bInputs.addInputNode("Jump");
         bInputs.addInputNode("Action");
@@ -25,9 +27,13 @@ public class PlayerController : MonoBehaviour {
             return;
         }
         float hInput = Input.GetAxisRaw("Horizontal");
+        float vInput = Input.GetAxisRaw("Vertical");
         bInputs.resetBuffer("Jump");
         bInputs.resetBuffer("Action");
-
+        if (cGravity != null)
+        {
+            cGravity.setVerticalInput(vInput);
+        }
         if (mMechanics != null)
         {
             mMechanics.setHorizontalInput(hInput);
