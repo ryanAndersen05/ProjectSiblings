@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour {
     MovementMechanics mMechanics;
     JumpMechanics jMechanics;
     Dialogue dialogue;
+    SummonItemMechanics sItemMechanics;
     BufferedInputs bInputs;
 
     void Start()
     {
+        sItemMechanics = GetComponent<SummonItemMechanics>();
         mMechanics = GetComponent<MovementMechanics>();
         dialogue = GetComponent<Dialogue>();
         jMechanics = GetComponent<JumpMechanics>();
@@ -25,12 +27,17 @@ public class PlayerController : MonoBehaviour {
             return;
         }
         float hInput = Input.GetAxisRaw("Horizontal");
+        bool useItem = Input.GetButtonDown("UseItem");
         bInputs.resetBuffer("Jump");
         bInputs.resetBuffer("Action");
 
         if (mMechanics != null)
         {
             mMechanics.setHorizontalInput(hInput);
+        }
+        if (sItemMechanics != null)
+        {
+            sItemMechanics.summonItem(useItem);
         }
         if (jMechanics != null)
         {

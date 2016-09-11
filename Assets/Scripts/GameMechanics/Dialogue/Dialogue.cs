@@ -19,8 +19,11 @@ public class Dialogue : MonoBehaviour {
     {
         if (buttonDown && npcDialogue && !dialogueUI.isActive)
         {
-            dialogueUI.activateConversation(npcDialogue.dialogueFileName);
-            
+            bool dialogueActivated = dialogueUI.activateConversation(npcDialogue, this);
+            if (!dialogueActivated)
+            {
+                return false;
+            }
             float direction = transform.position.x - npcDialogue.transform.position.x;
             if (direction > 0)
             {
@@ -30,6 +33,7 @@ public class Dialogue : MonoBehaviour {
             {
                 fSprite.isRight = true;
             }
+
             fSprite.updateDirection();
             anim.SetTrigger("Dialogue");
             return true;
@@ -37,9 +41,12 @@ public class Dialogue : MonoBehaviour {
         return false;
     }
 
-    void Update()
+    public void endDialogue()
     {
-
+        if (!dialogueUI.isActive)
+        {
+            anim.SetTrigger("Dialogue");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)

@@ -19,9 +19,14 @@ public class DialogueUI : MonoBehaviour {
     DialogueNode[] dNodes;
     int currentDialogueSegment = 0;
     public float coolDownTimer = 0;
+    Dialogue player;
+    NPCDialogue npc;
 
-    public bool activateConversation(string fileName)
+    public bool activateConversation(NPCDialogue npc, Dialogue player)
     {
+        this.player = player;
+        this.npc = npc;
+        string fileName = npc.dialogueFileName;
         if (coolDownTimer > 0) return false;
         dNodes = DialogueFileParser.parseDialogueFile(fileName);
         dialogueBox.gameObject.SetActive(true);
@@ -54,6 +59,7 @@ public class DialogueUI : MonoBehaviour {
             nameBoxLeft.gameObject.SetActive(false);
             nameBoxRight.gameObject.SetActive(false);
             coolDownTimer = coolDownTimeEnd;
+            player.endDialogue();
             return;
         }
         if (dNodes[currentDialogueSegment].characterName != dNodes[currentDialogueSegment - 1].characterName)
