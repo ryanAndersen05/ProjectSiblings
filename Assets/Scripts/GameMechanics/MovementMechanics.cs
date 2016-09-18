@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MovementMechanics : MonoBehaviour {
     public float walkSpeed = 3;
+    public float runSpeed = 5;
     public float acceleration = 3;
     public bool updateSpeed = true;
     public bool updateInput = true;
@@ -31,7 +32,18 @@ public class MovementMechanics : MonoBehaviour {
         }
         if (!updateInput) hInput = 0;
         float goalSpeed = 0;
-        if (Mathf.Abs(hInput) > 0)
+        if (Mathf.Abs(hInput) > 0.5f)
+        {
+            if (hInput > 0)
+            {
+                goalSpeed = runSpeed;
+            }
+            else
+            {
+                goalSpeed = -runSpeed;
+            }
+        }
+        else if (Mathf.Abs(hInput) > 0.01f)
         {
             if (hInput > 0)
             {

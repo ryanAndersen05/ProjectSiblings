@@ -32,11 +32,11 @@ public class JumpMechanics : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (!checkInAir.inAir) return;
+        if (!checkInAir.inAir || Mathf.Abs(mMechanics.getCurrentHInput()) < 0.01f) return;
         
         float xVel = rigid.velocity.x;
         //print(xVel);
-        xVel = Mathf.MoveTowards(xVel, mMechanics.getCurrentHInput() * movementInAirSpeed, movementAcceleration * Time.fixedDeltaTime);
+        xVel = Mathf.MoveTowards(xVel, mMechanics.getCurrentHInput() / Mathf.Abs(mMechanics.getCurrentHInput()) * movementInAirSpeed, movementAcceleration * Time.fixedDeltaTime);
         //print(xVel);
         rigid.velocity = new Vector2(xVel, rigid.velocity.y);
     }
