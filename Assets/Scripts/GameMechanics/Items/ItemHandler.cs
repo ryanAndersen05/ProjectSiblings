@@ -55,6 +55,7 @@ public class ItemHandler : MonoBehaviour {
         if (i.currentStack <= 0)
         {
             currentHeldItems.Remove(i);
+            selectItemDown();
         }
         return i.item;
     }

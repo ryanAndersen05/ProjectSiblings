@@ -15,7 +15,16 @@ public class DialogueFileParser {
             string line = reader.ReadLine();
             while (line != null)
             {
-                DialogueNode dNode = getDialogueNode(line);
+
+                DialogueNode dNode = null;
+                if (line.Length > 0 && line[0] == '!')
+                {
+                    dNode = getOptionNode(line);
+                }
+                else
+                {
+                    dNode = getDialogueNode(line);
+                }
                 if (dNode != null)
                 {
                     dNodes.Add(dNode);
@@ -34,6 +43,19 @@ public class DialogueFileParser {
             i++;
         }
         return allDialogueNodes;
+    }
+
+    private static OptionNode getOptionNode(string line)
+    {
+        OptionNode oNode = new OptionNode();
+        string parseString = line.Substring(1, line.Length);
+        string[] infoArray = parseString.Split('|');
+        oNode.characterName = infoArray[0];
+        for (int i = 1; i < infoArray.Length; i++)
+        {
+
+        }
+        return oNode;
     }
 
     private static DialogueNode getDialogueNode(string line)
