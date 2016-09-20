@@ -10,6 +10,7 @@ public class NPCDialogue : MonoBehaviour {
     void Start()
     {
         dialogueFileName = "/DialogueScripts/" + dialogueFileName;
+        DebugTools.printConversation(dialogueFileName);
     }
 
     void OnTriggerEnter2D (Collider2D collider)

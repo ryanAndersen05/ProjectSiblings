@@ -1,8 +1,4 @@
-Philia|Hey Charlotte! What's going on?
-Charlotte|Not much...
-Charlotte|...Just waiting here.
-Philia|What are you waiting for?
-Charlotte|Mr. Right. My mom says if you're patient enough, he will come to you.
-Philia|I don't think that's how it works...
-Charlotte|Not if you have that attitude! You just need to be hopeful and assume everything will be given to you.
-Philia|Well alright... good luck with that.
+Charlotte|Welcome to my shop! Can I interest you in any goodies today?
+!Philia|Yes please!|No thanks...
+Charlotte|Great! Have a look around! Let me know if anything tickles you're fancy.
+!Charlotte|That's ok. Come back anytime if you need anything.

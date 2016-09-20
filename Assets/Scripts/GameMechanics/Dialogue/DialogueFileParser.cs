@@ -15,11 +15,12 @@ public class DialogueFileParser {
             string line = reader.ReadLine();
             while (line != null)
             {
-
                 DialogueNode dNode = null;
+
                 if (line.Length > 0 && line[0] == '!')
                 {
-                    dNode = getOptionNode(line);
+                    
+                    dNode = getOptionNode(parseOptionLines(reader, line));                    
                 }
                 else
                 {
@@ -45,17 +46,50 @@ public class DialogueFileParser {
         return allDialogueNodes;
     }
 
-    private static OptionNode getOptionNode(string line)
+    private static string[] parseOptionLines(StreamReader reader, string line)
+    {
+        List<string> lines = new List<string>();
+        lines.Add(line.Substring(1));
+        line = reader.ReadLine();
+        while (line != null && line[0] != '!')
+        {
+            lines.Add(line);
+            line = reader.ReadLine();
+        }
+        lines.Add(line.Substring(1));
+        return lines.ToArray();
+    }
+
+    private static OptionNode getOptionNode(string[] lines)
     {
         OptionNode oNode = new OptionNode();
-        string parseString = line.Substring(1, line.Length);
-        string[] infoArray = parseString.Split('|');
-        oNode.characterName = infoArray[0];
-        for (int i = 1; i < infoArray.Length; i++)
-        {
+        
+        oNode.optionResponses = splitOptions(lines[0], oNode);
 
+        List<DialogueNode> responseNodes = new List<DialogueNode>();
+        for (int i = 1; i < lines.Length; i++)
+        {
+            responseNodes.Add(getDialogueNode(lines[i]));
         }
+        oNode.npcDialogueOptions = responseNodes.ToArray();
         return oNode;
+    }
+
+    private static string[] splitOptions(string line, OptionNode oNode)
+    {
+        List<string> allOptions = new List<string>();
+        string[] splitOptions = line.Split('|');
+        Debug.Log(splitOptions.Length);
+        if (splitOptions.Length <= 0)
+        {
+            return null;
+        }
+        oNode.characterName = splitOptions[0];
+        for (int i = 1; i < splitOptions.Length; i++)
+        {
+            allOptions.Add(splitOptions[i]);
+        }
+        return allOptions.ToArray();
     }
 
     private static DialogueNode getDialogueNode(string line)

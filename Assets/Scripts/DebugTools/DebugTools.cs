@@ -18,4 +18,13 @@ public class DebugTools {
         }
         return path;
     }
+
+    public static void printConversation(string fileName)
+    {
+        DialogueNode[] dNodes = DialogueFileParser.parseDialogueFile(fileName);
+        foreach (DialogueNode d in dNodes)
+        {
+            Debug.Log(d);
+        }
+    }
 }
