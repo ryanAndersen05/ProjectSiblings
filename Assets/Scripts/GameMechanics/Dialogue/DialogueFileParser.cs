@@ -6,9 +6,10 @@ using System.Collections.Generic;
 
 public class DialogueFileParser {
 
-	public static DialogueNode[] parseDialogueFile(string fileName)
+	public static DialogueNode parseDialogueFile(string fileName)
     {
-        List<DialogueNode> dNodes = new List<DialogueNode>();
+        DialogueNode headNode = new DialogueNode();
+        DialogueNode currentNode = headNode;
         try
         {
             StreamReader reader = new StreamReader(Application.dataPath + fileName, Encoding.Default);
@@ -28,7 +29,9 @@ public class DialogueFileParser {
                 }
                 if (dNode != null)
                 {
-                    dNodes.Add(dNode);
+                    currentNode.nextNode = dNode;
+                    dNode.prevNode = currentNode;
+                    currentNode = dNode;
                 }
                 line = reader.ReadLine();
             }
@@ -36,14 +39,7 @@ public class DialogueFileParser {
         {
             Debug.Log("The file " + fileName + " is invalid");
         }
-        DialogueNode[] allDialogueNodes = new DialogueNode[dNodes.Count];
-        int i = 0;
-        foreach (DialogueNode d in dNodes)
-        {
-            allDialogueNodes[i] = d;
-            i++;
-        }
-        return allDialogueNodes;
+        return headNode.nextNode;
     }
 
     private static string[] parseOptionLines(StreamReader reader, string line)
@@ -69,7 +65,9 @@ public class DialogueFileParser {
         List<DialogueNode> responseNodes = new List<DialogueNode>();
         for (int i = 1; i < lines.Length; i++)
         {
-            responseNodes.Add(getDialogueNode(lines[i]));
+            DialogueNode d = getDialogueNode(lines[i]);
+            d.prevNode = oNode;
+            responseNodes.Add(d);
         }
         oNode.npcDialogueOptions = responseNodes.ToArray();
         return oNode;
@@ -79,7 +77,6 @@ public class DialogueFileParser {
     {
         List<string> allOptions = new List<string>();
         string[] splitOptions = line.Split('|');
-        Debug.Log(splitOptions.Length);
         if (splitOptions.Length <= 0)
         {
             return null;

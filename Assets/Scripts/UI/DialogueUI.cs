@@ -16,9 +16,9 @@ public class DialogueUI : MonoBehaviour {
     public bool isRight;
     public float coolDownTime = .02f;
     public float coolDownTimeEnd = 1;
-    DialogueNode[] dNodes;
-    int currentDialogueSegment = 0;
+    public DialogueOptionsUI optionsUI;
     public float coolDownTimer = 0;
+    DialogueNode currentNode;
     Dialogue player;
     NPCDialogue npc;
 
@@ -28,31 +28,36 @@ public class DialogueUI : MonoBehaviour {
         this.npc = npc;
         string fileName = npc.dialogueFileName;
         if (coolDownTimer > 0) return false;
-        dNodes = DialogueFileParser.parseDialogueFile(fileName);
+        currentNode = DialogueFileParser.parseDialogueFile(fileName);
         dialogueBox.gameObject.SetActive(true);
-        dialogueText.text = dNodes[0].dialogueSegment;
+        dialogueText.text = currentNode.dialogueSegment;
         nameBoxLeft.gameObject.SetActive(true);
-        nameLeft.text = dNodes[0].characterName;
+        nameLeft.text = currentNode.characterName;
         isActive = true;
-        currentDialogueSegment = 0;
         coolDownTimer = coolDownTime;
         return true;
     }
 
     void Update()
     {
+        if (optionsUI.isActiveAndEnabled) return;
         if (isActive && Input.GetButtonDown("Action") && coolDownTimer <= 0)
         {
             nextDialogue();
-            
         }
         coolDownTimer = Mathf.MoveTowards(coolDownTimer, 0, Time.deltaTime);
     }
 
-    void nextDialogue()
+    public void nextDialogue()
     {
-        currentDialogueSegment++;
-        if (currentDialogueSegment >= dNodes.Length)
+        currentNode = currentNode.nextNode;
+        displayDialogue();
+        
+    }
+
+    public void displayDialogue()
+    {
+        if (currentNode == null)
         {
             isActive = false;
             dialogueBox.gameObject.SetActive(false);
@@ -62,28 +67,37 @@ public class DialogueUI : MonoBehaviour {
             player.endDialogue();
             return;
         }
-        if (dNodes[currentDialogueSegment].characterName != dNodes[currentDialogueSegment - 1].characterName)
+        if (currentNode is OptionNode)
+        {
+            optionsUI.openOptionMenu((OptionNode)currentNode);
+            return;
+        }
+        if (currentNode.characterName != currentNode.prevNode.characterName)
         {
             isRight = !isRight;
         }
-        
+
         if (isRight)
         {
-            
+
             nameBoxLeft.gameObject.SetActive(false);
             nameBoxRight.gameObject.SetActive(true);
-            nameRight.text = dNodes[currentDialogueSegment].characterName;
+            nameRight.text = currentNode.characterName;
         }
         else
         {
-            
+
             nameBoxRight.gameObject.SetActive(false);
             nameBoxLeft.gameObject.SetActive(true);
-            nameLeft.text = dNodes[currentDialogueSegment].characterName;
+            nameLeft.text = currentNode.characterName;
         }
         //print(dNodes[currentDialogueSegment].characterName + ":" + dNodes[currentDialogueSegment].dialogueSegment);
-        dialogueText.text = dNodes[currentDialogueSegment].dialogueSegment;
+        dialogueText.text = currentNode.dialogueSegment;
         coolDownTimer = coolDownTime;
     }
 
+    public void setCurrentNode(DialogueNode dNode)
+    {
+        this.currentNode = dNode;
+    }
 }

@@ -21,10 +21,11 @@ public class DebugTools {
 
     public static void printConversation(string fileName)
     {
-        DialogueNode[] dNodes = DialogueFileParser.parseDialogueFile(fileName);
-        foreach (DialogueNode d in dNodes)
+        DialogueNode dNode = DialogueFileParser.parseDialogueFile(fileName);
+        while (dNode != null)
         {
-            Debug.Log(d);
+            Debug.Log(dNode);
+            dNode = dNode.nextNode;
         }
     }
 }
