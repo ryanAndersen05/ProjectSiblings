@@ -43,6 +43,8 @@ public class DialogueOptionsUI : MonoBehaviour {
 
     public void openOptionMenu(OptionNode oNode)
     {
+        this.currentPosition = 0;
+        this.optionPointer.position = optionPointerPositions[currentPosition].position;
         this.oNode = oNode;
         this.gameObject.SetActive(true);
         setOptionsMenu(oNode);

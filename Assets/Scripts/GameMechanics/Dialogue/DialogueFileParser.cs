@@ -35,10 +35,12 @@ public class DialogueFileParser {
                 }
                 line = reader.ReadLine();
             }
+            reader.Close();
         } catch
         {
             Debug.Log("The file " + fileName + " is invalid");
         }
+       
         return headNode.nextNode;
     }
 
