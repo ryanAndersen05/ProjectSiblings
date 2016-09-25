@@ -58,6 +58,7 @@ public class DialogueOptionsUI : MonoBehaviour {
         this.gameObject.SetActive(false);
         oNode.optionChosen = currentPosition;
         oNode.optionAction = oActionNode.optionActions[oNode.optionChosen];
+        oNode.optionAction.setOptionUI(this);
         if (oNode.optionAction != null) oNode.optionAction.resetActionNode();
         dialogueUI.setCurrentNode(oNode.npcDialogueOptions[currentPosition]);
         dialogueUI.displayDialogue();

@@ -110,6 +110,7 @@ public class DialogueUI : MonoBehaviour {
 
     public void setCurrentNode(DialogueNode dNode)
     {
+        dNode.prevNode = this.currentNode;
         this.currentNode = dNode;
     }
 

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class OptionAction : MonoBehaviour {
     public int actionCount = 1;
+    public DialogueOptionsUI optionsUI;
     private int countDownToAction = 1;
     private bool actionActive = false;
 
@@ -37,6 +38,11 @@ public class OptionAction : MonoBehaviour {
     {
         this.countDownToAction = actionCount;
         this.actionActive = false;
+    }
+
+    public void setOptionUI(DialogueOptionsUI optionsUI)
+    {
+        this.optionsUI = optionsUI;
     }
 
     protected virtual void performAction()
