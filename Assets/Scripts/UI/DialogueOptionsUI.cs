@@ -9,6 +9,8 @@ public class DialogueOptionsUI : MonoBehaviour {
     public Text optionText;
     public float pointerSpeed = 1.0f;
 
+    int currentOptionAction = 0;
+    OptionActionNode oActionNode;
     OptionNode oNode;
     int currentPosition = 0;
     bool moveCursor = true;
@@ -46,6 +48,7 @@ public class DialogueOptionsUI : MonoBehaviour {
         this.currentPosition = 0;
         this.optionPointer.position = optionPointerPositions[currentPosition].position;
         this.oNode = oNode;
+        this.oActionNode = dialogueUI.getNPCDialogue().actionNodes[currentOptionAction++];
         this.gameObject.SetActive(true);
         setOptionsMenu(oNode);
     }
@@ -54,8 +57,17 @@ public class DialogueOptionsUI : MonoBehaviour {
     {
         this.gameObject.SetActive(false);
         oNode.optionChosen = currentPosition;
+        oNode.optionAction = oActionNode.optionActions[oNode.optionChosen];
+        if (oNode.optionAction != null) oNode.optionAction.resetActionNode();
         dialogueUI.setCurrentNode(oNode.npcDialogueOptions[currentPosition]);
         dialogueUI.displayDialogue();
+
+    }
+
+    public void resetOptionsUI()
+    {
+        this.oNode = null;
+        this.currentOptionAction = 0;
     }
 
     void setOptionsMenu(OptionNode oNode)
@@ -78,5 +90,10 @@ public class DialogueOptionsUI : MonoBehaviour {
     {
         optionPointer.position = Vector3.Slerp(optionPointer.position,
             optionPointerPositions[currentPosition].position, Time.deltaTime / pointerSpeed);
+    }
+
+    public OptionNode getCurrentOptionNode()
+    {
+        return oNode;
     }
 }

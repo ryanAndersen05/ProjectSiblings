@@ -5,6 +5,7 @@ public class OptionNode : DialogueNode {
     public string[] optionResponses;
     public DialogueNode[] npcDialogueOptions;
     public int optionChosen = 0;
+    public OptionAction optionAction;
 
     public override string ToString()
     {

@@ -24,10 +24,11 @@ public class DialogueUI : MonoBehaviour {
 
     public bool activateConversation(NPCDialogue npc, Dialogue player)
     {
+        if (coolDownTimer > 0) return false;
         this.player = player;
         this.npc = npc;
         string fileName = npc.dialogueFileName;
-        if (coolDownTimer > 0) return false;
+        optionsUI.resetOptionsUI();
         currentNode = DialogueFileParser.parseDialogueFile(fileName);
         dialogueBox.gameObject.SetActive(true);
         dialogueText.text = currentNode.dialogueSegment;
@@ -50,9 +51,20 @@ public class DialogueUI : MonoBehaviour {
 
     public void nextDialogue()
     {
+        if (checkOptionActionActive()) return;
         currentNode = currentNode.nextNode;
         displayDialogue();
         
+    }
+
+    bool checkOptionActionActive()
+    {
+        if (optionsUI.getCurrentOptionNode() == null) return false;
+        OptionNode oNode = optionsUI.getCurrentOptionNode();
+        if (oNode.optionAction == null) return false;
+        oNode.optionAction.tickAction();
+        if (oNode.optionAction.isActive()) return true;
+        return false;
     }
 
     public void displayDialogue()
@@ -99,5 +111,10 @@ public class DialogueUI : MonoBehaviour {
     public void setCurrentNode(DialogueNode dNode)
     {
         this.currentNode = dNode;
+    }
+
+    public NPCDialogue getNPCDialogue()
+    {
+        return npc;
     }
 }
