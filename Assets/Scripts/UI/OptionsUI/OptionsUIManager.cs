@@ -3,6 +3,7 @@ using System.Collections;
 
 public class OptionsUIManager : MonoBehaviour {
     public OptionsUINode initialOptionNode;
+    public OptionsPointer optionsPoiter;
 
     public const int NORTH = 0;
     public const int SOUTH = 1;
@@ -65,6 +66,7 @@ public class OptionsUIManager : MonoBehaviour {
         this.currentOptionNode.isCurrentNode = false;
         this.currentOptionNode = oNode;
         this.currentOptionNode.isCurrentNode = true;
+        this.optionsPoiter.destination = (RectTransform)currentOptionNode.transform;
     }
 
     private void moveOptionsNode(int direction)
