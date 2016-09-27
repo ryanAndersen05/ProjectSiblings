@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class OptionsUINode : MonoBehaviour {
@@ -8,10 +9,20 @@ public class OptionsUINode : MonoBehaviour {
     public OptionsUINode westNode;
 
     RectTransform pointerPosition;
+    Button optionButton;
     public bool isCurrentNode = false;
 
     void Start()
     {
-        
+        optionButton = GetComponent<Button>();   
+    }
+
+    void Update()
+    {
+        if (!isCurrentNode) return;
+        if (Input.GetButtonDown("Action"))
+        {
+            optionButton.onClick.Invoke();
+        }
     }
 }
