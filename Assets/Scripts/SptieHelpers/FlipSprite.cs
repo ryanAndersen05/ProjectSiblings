@@ -4,11 +4,15 @@ using System.Collections;
 public class FlipSprite : MonoBehaviour {
     public bool isRight = false;
     public bool lockDirection = false;
+    public bool useScale = true;
     bool previousIsRight = false;
+    SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         updateDirection();
+
     }
 
     void Update()
@@ -28,11 +32,26 @@ public class FlipSprite : MonoBehaviour {
        
         if (isRight)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            if (useScale)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                spriteRenderer.flipX = true;
+            }
         }
         else
         {
-            transform.localScale = Vector3.one;
+            if (useScale)
+            {
+                transform.localScale = Vector3.one;
+            }
+            else
+            {
+                spriteRenderer.flipX = false;
+            }
+            
         }
     }
 }
