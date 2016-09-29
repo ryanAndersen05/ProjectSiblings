@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class DoorLogic : MonoBehaviour {
+    public int doorID = 1;
+    public string sceneToOpen = "WinterScene";
     bool doorActive = false;
 
     void Update()
@@ -33,6 +35,7 @@ public class DoorLogic : MonoBehaviour {
 
     void openDoor()
     {
-        SceneManager.LoadScene("WinterScene");
+        PlayerSpawn.playerSpawn = doorID;
+        SceneManager.LoadScene(sceneToOpen);
     }
 }

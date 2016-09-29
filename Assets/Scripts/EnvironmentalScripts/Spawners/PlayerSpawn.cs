@@ -9,6 +9,11 @@ public class PlayerSpawn : MonoBehaviour {
 
     void Awake()
     {
+        if (playerSpawn >= spawnPoints.Length || playerSpawn < 0)
+        {
+            playerSpawn = 0;
+        }
+        if (spawnPoints.Length <= 0) return;
         GameObject.Instantiate(playerPrefab, spawnPoints[playerSpawn].position, Quaternion.identity);
     }
 }
