@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour {
             return;
         }
         float hInput = Input.GetAxisRaw("Horizontal");
+        float vInput = Input.GetAxisRaw("Vertical");
         bool useItem = Input.GetButtonDown("UseItem");
         bInputs.resetBuffer("Jump");
         bInputs.resetBuffer("Action");
