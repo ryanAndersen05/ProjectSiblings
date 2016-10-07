@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class NPCDialogue : MonoBehaviour {
     public string dialogueFileName;
     public Transform actionIcon;
-    public OptionActionNode[] actionNodes = new OptionActionNode[1];
 
     List<Collider2D> allColliders = new List<Collider2D>();
 

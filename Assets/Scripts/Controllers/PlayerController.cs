@@ -5,7 +5,6 @@ public class PlayerController : MonoBehaviour {
     public bool disableControls;
     MovementMechanics mMechanics;
     JumpMechanics jMechanics;
-    Dialogue dialogue;
     SummonItemMechanics sItemMechanics;
     BufferedInputs bInputs;
 
@@ -13,7 +12,6 @@ public class PlayerController : MonoBehaviour {
     {
         sItemMechanics = GetComponent<SummonItemMechanics>();
         mMechanics = GetComponent<MovementMechanics>();
-        dialogue = GetComponent<Dialogue>();
         jMechanics = GetComponent<JumpMechanics>();
         bInputs = new BufferedInputs();
         bInputs.addInputNode("Jump");
@@ -44,10 +42,7 @@ public class PlayerController : MonoBehaviour {
         {
             bInputs.cancelBuffer("Jump", jMechanics.activateJump(bInputs.isActive("Jump")));
         }
-        if (dialogue != null)
-        {
-            bInputs.cancelBuffer("Action", dialogue.activatedDialogue(bInputs.isActive("Action")));
-        }
+        
         bInputs.updateInputs();
     }
 
