@@ -6,10 +6,12 @@ public class DialogueNode {
     public string characterName;
     public string characterEmotion;
     public string dialogueSegment;
-    public OptionAction[] startActions;
-    public OptionAction[] endActions;
+    public List<string> startActions = new List<string>();
+    public List<string> endActions = new List<string>();
     public DialogueNode prevNode;
     public DialogueNode nextNode;
+    public bool isLocalHead = false;
+    public string originalFileName;
 
     public override string ToString()
     {
@@ -17,27 +19,28 @@ public class DialogueNode {
             "Dialogue: " + dialogueSegment;
     }
 
-    public OptionAction[] performStartActions()
+    public void performStartActions()
     {
-        return performActions(startActions);
-    }
-
-    public OptionAction[] performEndActions()
-    {
-        return performActions(endActions);
-    }
-
-    private OptionAction[] performActions(OptionAction[] actions)
-    {
-        List<OptionAction> activeActions = new List<OptionAction>();
-        foreach (OptionAction oA in actions)
+        foreach (string s in startActions)
         {
-            oA.performAction();
-            if (oA.isActive)
-            {
-                activeActions.Add(oA);
-            }
+            DialogueActions.performDialogueActions(s, this);
         }
-        return activeActions.ToArray();
+    }
+
+    public void performEndActions()
+    {
+        foreach (string s in endActions)
+        {
+            DialogueActions.performDialogueActions(s, this);
+        }
+    }
+
+    public DialogueNode getLocalHead()
+    {
+        if (prevNode == null || isLocalHead)
+        {
+            return this;
+        }
+        return this.prevNode.getLocalHead();
     }
 }

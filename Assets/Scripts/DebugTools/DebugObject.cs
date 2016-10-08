@@ -12,10 +12,11 @@ public class DebugObject : MonoBehaviour {
 	void Update () {
 	    if (Input.GetKeyDown(KeyCode.Tab))
         {
-            DialogueNode dNode = DialogueFileParser.parseDialogueFile("/DialogueScripts/TestDialogue.txt", "A");
+            DialogueNode dNode = DialogueFileParser.parseDialogueFile("/DialogueScripts/TestDialogue.txt", "B");
             while(dNode != null)
             {
                 Debug.Log(dNode);
+                dNode.performStartActions();
                 dNode = dNode.nextNode;
             }
         }

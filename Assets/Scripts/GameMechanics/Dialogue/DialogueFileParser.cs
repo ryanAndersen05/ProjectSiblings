@@ -16,6 +16,7 @@ public class DialogueFileParser {
         {
             StreamReader reader = new StreamReader(Application.dataPath + fileName, Encoding.Default);
             headNode = buildSectionDialogue(reader, section);
+            headNode.originalFileName = fileName;
             reader.Close();
         } catch
         {
@@ -52,33 +53,50 @@ public class DialogueFileParser {
         }
         line = reader.ReadLine();
         DialogueNode prevNode = null;
+        DialogueNode currentNode = new DialogueNode();
         while (line != null && line.CompareTo("END") != 0)
         {
-            lineParts = line.Split('|');
-            DialogueNode dNode = new DialogueNode();
-            dNode.characterName = lineParts[0];
-            if (lineParts.Length >= 2)
+            if (line.Length > 0 && line[0] == '\t')
             {
-                dNode.dialogueSegment = lineParts[1];
+                
+                line = line.Substring(1, line.Length - 1);
             }
-            if (lineParts.Length >= 3)
+            else
             {
-                dNode.characterEmotion = lineParts[2];
+                if (currentNode != null)
+                {
+                    prevNode = currentNode;
+                }
+                currentNode = new DialogueNode();
             }
-            if (prevNode != null)
+            switch(line[0])
             {
-                dNode.prevNode = prevNode;
-                prevNode.nextNode = dNode;
+                case '+':
+                    currentNode.startActions.Add(line.Substring(1, line.Length - 1));
+                    break;
+                case '-':
+                    currentNode.endActions.Add(line.Substring(1, line.Length - 1));
+                    break;
+                default:
+                    lineParts = line.Split('|');
+                    currentNode.characterName = lineParts[0];
+                    if (lineParts.Length > 1)
+                    {
+                        currentNode.dialogueSegment = lineParts[1];
+                    }
+                    if (lineParts.Length > 2)
+                    {
+                        currentNode.characterEmotion = lineParts[2];
+                    }
+                    break;
             }
-            prevNode = dNode;
             line = reader.ReadLine();
         }
-        
-        while(prevNode.prevNode != null)
+        while(currentNode.prevNode != null)
         {
-            prevNode = prevNode.prevNode;
+            currentNode = currentNode.prevNode;
         }
 
-        return prevNode;
+        return currentNode;
     }
 }

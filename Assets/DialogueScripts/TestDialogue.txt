@@ -1,5 +1,6 @@
 BEGIN A
 Merchant|Hello! Welcome to my shop! There are many like this, but this one is mine.
+	+OPENSECTION B
 END
 
 BEGIN B
