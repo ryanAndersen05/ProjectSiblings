@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class DialogueFileParser {
 
-	public static DialogueNode parseDialogueFile(string fileName)
+	public static DialogueNode parseDialogueFile(string fileName, string section = "")
     {
         DialogueNode headNode = new DialogueNode();
         DialogueNode currentNode = headNode;
@@ -16,7 +16,7 @@ public class DialogueFileParser {
             string line = reader.ReadLine();
             while (line != null)
             {
-                DialogueNode dNode = constructDialogueNode(line);
+                //DialogueNode dNode = constructDialogueNode(line);
                 line = reader.ReadLine();
             }
             reader.Close();
@@ -24,11 +24,10 @@ public class DialogueFileParser {
         {
             Debug.Log("The file " + fileName + " is invalid");
         }
-       
         return headNode.nextNode;
     }
 
-    private static DialogueNode constructDialogueNode(string line)
+    private static DialogueNode constructDialogueNode(StreamReader reader, string line)
     {
         return null;
     }

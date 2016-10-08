@@ -1,0 +1,11 @@
+Commands:
+BEGIN/END - Begin a new dialogue section in the game. You need to close the dialogue section as well especially if there are more than one section
+	-If you have multiple sections in a file, you will need to lable each section as such BEGIN A or BEGIN firstPart. All that matters is that the name is continuous and unique
+OPENSECTION - This command will open a specific section of the current file and will attach the new thread to the current thread
+OPENFILE - This command will open a new file and attach the new thread to the current thread
+	-If you want to open a specific section in the new file add a space and then type out the name of the section
+	-i.e. OPENFILE newFile.txt A
+| = this character separates a standard dialogue node. Use this to separate the characterName|DialogueSegment|PlayerEmotion
+	-Side note: If you want to change multiple emotions at once, enter a line as such 'characterName||playerEmotion'
+	-If you don't need to change the player emotion enter a line as such characterName|dialogueSegment
+	-You will always need the characterName though... For now...
