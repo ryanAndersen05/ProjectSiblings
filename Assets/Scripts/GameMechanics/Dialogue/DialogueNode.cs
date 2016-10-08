@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class DialogueNode {
     public string characterName;
+    public string characterEmotion;
     public string dialogueSegment;
     public OptionAction[] startActions;
     public OptionAction[] endActions;

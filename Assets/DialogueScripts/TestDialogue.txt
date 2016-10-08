@@ -1,8 +1,18 @@
 BEGIN A
 Merchant|Hello! Welcome to my shop! There are many like this, but this one is mine.
-
 END
 
 BEGIN B
-
+Philia|You can never understand what it is that a girl could want.
+Anax|What are you even talking about?
+Philia|Just think about it.
+Anax|What do you want?
+Philia|I don't want anything! You really don't get it do you. Just think about it.
+Anax|Philia, please, I don't have time for your games.
+Philia|Think about the girl that we just passed. What did she want?
+Anax|Money? Looks? I don't know she seemed really desperate...
+Philia|She wanted protection you idiot. She's scared.
+Anax|Scared of what?
+Philia|I don't know... We should go talk to her again.
+Anax|I.. she didn't seem scared. How can you tell?
 END

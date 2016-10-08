@@ -9,7 +9,7 @@ public class ScaredMechanics : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        anim.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 	}
 
     void Update()
