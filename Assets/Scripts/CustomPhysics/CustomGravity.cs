@@ -19,6 +19,7 @@ public class CustomGravity : MonoBehaviour {
         currentScale = gravityScale;
         checkInAir = GetComponentInChildren<CheckInAir>();
         rigid = GetComponent<Rigidbody2D>();
+        rigid.gravityScale = 0;
     }
 
     void FixedUpdate()

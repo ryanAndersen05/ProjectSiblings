@@ -26,7 +26,7 @@ public class MovementMechanics : MonoBehaviour {
     
     void FixedUpdate()
     {
-        if (!updateSpeed || checkInAir.inAir)
+        if (!updateSpeed || (checkInAir != null && checkInAir.inAir))
         {
             return;
         }
@@ -61,7 +61,10 @@ public class MovementMechanics : MonoBehaviour {
 
     void Update()
     {
-        anim.SetFloat("Speed", Mathf.Abs(hInput));
+        if (anim != null)
+        {
+            anim.SetFloat("Speed", Mathf.Abs(hInput));
+        }
         if (hInput < 0)
         {
             fSprite.isRight = false;

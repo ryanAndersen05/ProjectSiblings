@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     MovementMechanics mMechanics;
     JumpMechanics jMechanics;
     SummonItemMechanics sItemMechanics;
+    AttackMechanics aMechanics;
     BufferedInputs bInputs;
 
     void Start()
@@ -13,9 +14,11 @@ public class PlayerController : MonoBehaviour {
         sItemMechanics = GetComponent<SummonItemMechanics>();
         mMechanics = GetComponent<MovementMechanics>();
         jMechanics = GetComponent<JumpMechanics>();
+        aMechanics = GetComponent<AttackMechanics>();
         bInputs = new BufferedInputs();
         bInputs.addInputNode("Jump");
         bInputs.addInputNode("Action");
+        bInputs.addInputNode("Attack");
     }
 
     void Update()
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour {
         float hInput = Input.GetAxisRaw("Horizontal");
         float vInput = Input.GetAxisRaw("Vertical");
         bool useItem = Input.GetButtonDown("UseItem");
+        bInputs.resetBuffer("Attack");
         bInputs.resetBuffer("Jump");
         bInputs.resetBuffer("Action");
 
@@ -41,6 +45,10 @@ public class PlayerController : MonoBehaviour {
         if (jMechanics != null)
         {
             bInputs.cancelBuffer("Jump", jMechanics.activateJump(bInputs.isActive("Jump")));
+        }
+        if (aMechanics != null)
+        {
+            bInputs.cancelBuffer("Attack", aMechanics.attack(bInputs.isActive("Attack")));
         }
         
         bInputs.updateInputs();
