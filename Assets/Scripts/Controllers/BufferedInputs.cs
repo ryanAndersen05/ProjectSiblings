@@ -40,6 +40,11 @@ public class BufferedInputs {
         }
     }
 
+    public void cancelBuffer(string inputName)
+    {
+        cancelBuffer(inputName, true);
+    }
+
     public bool isActive(string inputName)
     {
         return bufferedInputs[inputName].isActive();

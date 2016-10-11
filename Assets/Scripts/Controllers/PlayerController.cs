@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
         bInputs = new BufferedInputs();
         bInputs.addInputNode("Jump");
         bInputs.addInputNode("Action");
-        bInputs.addInputNode("Attack");
+        bInputs.addInputNode("Attack", .2f);
     }
 
     void Update()
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour {
         }
         if (aMechanics != null)
         {
+
             bInputs.cancelBuffer("Attack", aMechanics.attack(bInputs.isActive("Attack")));
         }
         

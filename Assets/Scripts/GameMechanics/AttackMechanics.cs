@@ -16,11 +16,19 @@ public class AttackMechanics : MonoBehaviour {
 
     public bool attack(bool attackButton)
     {
-        if (attackButton)
+        if (!attackButton)
         {
-            anim.SetTrigger("Attack");
-            return true;
+            anim.ResetTrigger("Attack");
+            
         }
+
+        if (attackButton && !anim.GetBool("Attack"))
+        {
+
+            anim.SetTrigger("Attack");
+            
+        }
+        
         return false;
     }
 }
