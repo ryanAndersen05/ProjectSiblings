@@ -13,6 +13,11 @@ public class SoundEffects : MonoBehaviour {
 
     public bool allowPan = false;
 
+    //These variables only matter if you use the playrandom method
+    public bool LOCK_PITCH = false;
+    public bool LOCK_VOLUME = false;
+    public bool LOCK_CLIP = false;
+
     AudioSource aSource;
 
     void Start()
@@ -37,9 +42,12 @@ public class SoundEffects : MonoBehaviour {
 
     public void setRandom()
     {
-        aSource.pitch = Random.Range(minPitch, maxPitch);
-        aSource.volume = Random.Range(minVolume, maxVolume);
-        aSource.clip = aClips[Random.Range(0, aClips.Length)];
+        if (!LOCK_PITCH)
+            aSource.pitch = Random.Range(minPitch, maxPitch);
+        if (!LOCK_VOLUME)
+            aSource.volume = Random.Range(minVolume, maxVolume);
+        if (!LOCK_CLIP)
+            aSource.clip = aClips[Random.Range(0, aClips.Length)];
     }
 
     public void playSound()
