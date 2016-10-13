@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     JumpMechanics jMechanics;
     SummonItemMechanics sItemMechanics;
     AttackMechanics aMechanics;
+    ArcherMechanics archMechanics;
     BufferedInputs bInputs;
 
     void Start()
@@ -15,10 +16,12 @@ public class PlayerController : MonoBehaviour {
         mMechanics = GetComponent<MovementMechanics>();
         jMechanics = GetComponent<JumpMechanics>();
         aMechanics = GetComponent<AttackMechanics>();
+        archMechanics = GetComponent<ArcherMechanics>();
         bInputs = new BufferedInputs();
         bInputs.addInputNode("Jump");
         bInputs.addInputNode("Action");
         bInputs.addInputNode("Attack", .2f);
+        bInputs.addInputNode("Projectile");
     }
 
     void Update()
@@ -33,7 +36,7 @@ public class PlayerController : MonoBehaviour {
         bInputs.resetBuffer("Attack");
         bInputs.resetBuffer("Jump");
         bInputs.resetBuffer("Action");
-
+        bInputs.resetBuffer("Projectile");
         if (mMechanics != null)
         {
             mMechanics.setHorizontalInput(hInput);
@@ -50,6 +53,11 @@ public class PlayerController : MonoBehaviour {
         {
 
             bInputs.cancelBuffer("Attack", aMechanics.attack(bInputs.isActive("Attack")));
+        }
+
+        if (archMechanics != null)
+        {
+            archMechanics.chargeBow(Input.GetButton("Projectile"));
         }
         
         bInputs.updateInputs();

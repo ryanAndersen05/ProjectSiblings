@@ -49,7 +49,10 @@ public class ArcherMechanics : MonoBehaviour {
     {
         ProjectileMechanics a = arrows[currentArrow];
         currentArrow = (currentArrow + 1) % totalArrows;
+        a.transform.position = launchLocation.position;
+        a.setUpLaunch(a.maxLaunchForce, (transform.localScale.x > 0) ? 180 : 0);
         a.gameObject.SetActive(true);
+        a.launchArrow();
         
     }
 }

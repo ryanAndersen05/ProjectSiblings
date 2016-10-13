@@ -5,10 +5,12 @@ public class ProjectileMechanics : MonoBehaviour {
     public float maxLaunchForce = 10;
     public float launchDirection = 0;
     public bool updatePhysics;
+    public float disableDistance = 25;
     float launchSpeed;
     Rigidbody2D rigid;
+    Vector3 launchPosition;
 
-    void Start()
+    void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         this.launchSpeed = maxLaunchForce;
@@ -22,6 +24,12 @@ public class ProjectileMechanics : MonoBehaviour {
 
         float direction = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
         this.transform.rotation = Quaternion.Euler(0, 0, direction);
+
+        if ((launchPosition - transform.position).magnitude > disableDistance)
+        {
+            this.gameObject.SetActive(false);
+            rigid.isKinematic = true;
+        }
     }
 
     public void setUpLaunch(float launchSpeed, float launchDirection)
@@ -32,7 +40,10 @@ public class ProjectileMechanics : MonoBehaviour {
 
     public void launchArrow()
     {
+        rigid.isKinematic = false;
+        launchPosition = transform.position;
         transform.rotation = Quaternion.Euler(0, 0, launchDirection);
+        
         rigid.AddForce(transform.right * maxLaunchForce, ForceMode2D.Impulse);
 
     }
