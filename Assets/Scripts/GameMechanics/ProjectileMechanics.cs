@@ -40,11 +40,12 @@ public class ProjectileMechanics : MonoBehaviour {
 
     public void launchArrow()
     {
+        rigid.gravityScale = Mathf.Abs(1 - launchSpeed / maxLaunchForce);
         rigid.isKinematic = false;
         launchPosition = transform.position;
         transform.rotation = Quaternion.Euler(0, 0, launchDirection);
         
-        rigid.AddForce(transform.right * maxLaunchForce, ForceMode2D.Impulse);
+        rigid.AddForce(transform.right * launchSpeed, ForceMode2D.Impulse);
 
     }
 }
