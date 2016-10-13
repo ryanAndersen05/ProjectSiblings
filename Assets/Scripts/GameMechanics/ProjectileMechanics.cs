@@ -40,6 +40,7 @@ public class ProjectileMechanics : MonoBehaviour {
 
     public void launchArrow()
     {
+        this.enabled = true;
         rigid.gravityScale = Mathf.Abs(1 - launchSpeed / maxLaunchForce);
         rigid.isKinematic = false;
         launchPosition = transform.position;
