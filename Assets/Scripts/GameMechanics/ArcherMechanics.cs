@@ -3,12 +3,14 @@ using System.Collections;
 
 public class ArcherMechanics : MonoBehaviour {
     public float maxChargeTime;
+    public float coolDownTime = 1;
     public Transform launchLocation;
     public GameObject arrowObject;
     ProjectileMechanics[] arrows;
     int currentArrow;
     const int totalArrows = 10;
     float chargeTimer = 0;
+    float coolDownTimer;
     bool bowDown;
     Animator anim;
 
@@ -25,13 +27,15 @@ public class ArcherMechanics : MonoBehaviour {
 
     void Update()
     {
-        if (bowDown)
+        coolDownTimer = Mathf.MoveTowards(coolDownTimer, 0, Time.deltaTime);
+        if (bowDown && coolDownTimer <= 0)
         {
             chargeTimer = Mathf.MoveTowards(chargeTimer, maxChargeTime, Time.deltaTime);
         }
         else if (chargeTimer > 0)
         {
             fireBow();
+            coolDownTimer = coolDownTime;
             chargeTimer = 0;
         }
         else

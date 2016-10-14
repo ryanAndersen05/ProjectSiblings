@@ -34,7 +34,6 @@ public class Hitbox : MonoBehaviour {
         }
         else
         {
-            print(collider.name);
             onDefaultColliderEntered(collider);
         }
         this.enabled = false;
