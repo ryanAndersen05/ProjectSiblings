@@ -2,14 +2,24 @@
 using System.Collections;
 
 public class State : MonoBehaviour {
+    public string stateName;
+    protected AIStateMachine stateMachine;
+    bool isActiveState;
+    
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public virtual void enterState(AIStateMachine stateMachine)
+    {
+        this.isActiveState = true;
+        this.stateMachine = stateMachine;
+    }
+
+    public virtual void exitState()
+    {
+        this.isActiveState = false;
+    }
+
+    public virtual void updateState()
+    {
+
+    }
 }
