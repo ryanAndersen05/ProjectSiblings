@@ -2,21 +2,29 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
+    public GameObject[] playableCharacters = new GameObject[2];
     public bool disableControls;
-    MovementMechanics mMechanics;
-    JumpMechanics jMechanics;
-    SummonItemMechanics sItemMechanics;
-    AttackMechanics aMechanics;
-    ArcherMechanics archMechanics;
+    public int currentPlayer = 0;
+    MovementMechanics[] mMechanics;
+    JumpMechanics[] jMechanics;
+    AttackMechanics[] aMechanics;
+    ArcherMechanics[] archMechanics;
     BufferedInputs bInputs;
 
     void Start()
     {
-        sItemMechanics = GetComponent<SummonItemMechanics>();
-        mMechanics = GetComponent<MovementMechanics>();
-        jMechanics = GetComponent<JumpMechanics>();
-        aMechanics = GetComponent<AttackMechanics>();
-        archMechanics = GetComponent<ArcherMechanics>();
+        mMechanics = new MovementMechanics[playableCharacters.Length];
+        jMechanics = new JumpMechanics[playableCharacters.Length];
+        aMechanics = new AttackMechanics[playableCharacters.Length];
+        archMechanics = new ArcherMechanics[playableCharacters.Length];
+        for (int i = 0; i < playableCharacters.Length; i++)
+        {
+            mMechanics[i] = playableCharacters[i].GetComponent<MovementMechanics>();
+            jMechanics[i] = playableCharacters[i].GetComponent<JumpMechanics>();
+            aMechanics[i] = playableCharacters[i].GetComponent<AttackMechanics>();
+            archMechanics[i] = playableCharacters[i].GetComponent<ArcherMechanics>();
+            playableCharacters[i].transform.parent = null;
+        }
         bInputs = new BufferedInputs();
         bInputs.addInputNode("Jump");
         bInputs.addInputNode("Action");
@@ -26,41 +34,35 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        if (disableControls)
-        {
-            return;
-        }
-        float hInput = Input.GetAxisRaw("Horizontal");
-        float vInput = Input.GetAxisRaw("Vertical");
-        bool useItem = Input.GetButtonDown("UseItem");
-        bInputs.resetBuffer("Attack");
-        bInputs.resetBuffer("Jump");
-        bInputs.resetBuffer("Action");
-        bInputs.resetBuffer("Projectile");
-        if (mMechanics != null)
-        {
-            mMechanics.setHorizontalInput(hInput);
-        }
-        if (sItemMechanics != null)
-        {
-            sItemMechanics.summonItem(useItem);
-        }
-        if (jMechanics != null)
-        {
-            bInputs.cancelBuffer("Jump", jMechanics.activateJump(bInputs.isActive("Jump")));
-        }
-        if (aMechanics != null)
-        {
+        updateCurrentPlayer();
+        updateAllPlayers();
+    }
 
-            bInputs.cancelBuffer("Attack", aMechanics.attack(bInputs.isActive("Attack")));
-        }
-
-        if (archMechanics != null)
+    void updateCurrentPlayer()
+    {
+        if (mMechanics[currentPlayer] != null)
         {
-            archMechanics.chargeBow(Input.GetButton("Projectile"));
+            mMechanics[currentPlayer].setHorizontalInput(Input.GetAxisRaw("Horizontal"));
         }
-        
-        bInputs.updateInputs();
+        if (jMechanics[currentPlayer] != null)
+        {
+            jMechanics[currentPlayer].activateJump(Input.GetButtonDown("Jump"));
+        }
+    }
+
+    void updateAllPlayers()
+    {
+        for (int i = 0; i < playableCharacters.Length; i++)
+        {
+            if (archMechanics[i] != null)
+            {
+                archMechanics[i].chargeBow(Input.GetButton("Projectile"));
+            }
+            if (aMechanics[i] != null)
+            {
+                aMechanics[i].attack(Input.GetButtonDown("Attack"));
+            }
+        }
     }
 
 

@@ -64,7 +64,7 @@ public class ColliderOptimization : MonoBehaviour {
         }
         return vPoints;
     }
-
+//*******************************************************
     private class PolyShape
     {
         public List<PolyPoint> polyPoints = new List<PolyPoint>();
@@ -112,12 +112,23 @@ public class ColliderOptimization : MonoBehaviour {
 
         PolyShape combineShape2Point(PolyShape p, PolyVector v)
         {
-            List<Vector2> newPoints = new List<Vector2>();
-            for (int i = 0; i < this.polyPoints.Count; i++)
+            List<PolyPoint> newPoints = new List<PolyPoint>();
+            int i = 0;
+            PolyPoint[] p1Points = p.polyPoints.ToArray();
+            PolyPoint[] p2Points = polyPoints.ToArray();
+            while (!v.containsPolyPoint(p1Points[i]) && i < p1Points.Length)
             {
-                
+                newPoints.Add(p1Points[i]);
+                i++;
             }
-            return new PolyShape(newPoints.ToArray());
+            int j = 0;
+            while (!p1Points[i].comparePoint(p2Points[j]))
+            {
+                j++;
+            }
+
+
+            return null;
         }
 
         public static PolyShape optimizePolyShape(PolyShape p1, PolyShape p2)
@@ -132,7 +143,7 @@ public class ColliderOptimization : MonoBehaviour {
             return null;
         }
     }
-
+//******************************************************
     private class PolyPoint
     {
         public float x;
@@ -155,8 +166,13 @@ public class ColliderOptimization : MonoBehaviour {
             if (Mathf.Abs(p.y - y) > .01f) return false;
             return true;
         }
-    }
 
+        public Vector2 toVector()
+        {
+            return new Vector2(x, y);
+        }
+    }
+//*****************************************************
     private class PolyVector
     {
         public PolyPoint p1;
@@ -177,6 +193,13 @@ public class ColliderOptimization : MonoBehaviour {
         {
             if (v.p1.comparePoint(p1) && v.p2.comparePoint(p2)) return true;
             if (v.p1.comparePoint(p2) && v.p2.comparePoint(p1)) return true;
+            return false;
+        }
+
+        public bool containsPolyPoint(PolyPoint p)
+        {
+            if (this.p1.comparePoint(p)) return true;
+            if (this.p2.comparePoint(p)) return true;
             return false;
         }
     }
