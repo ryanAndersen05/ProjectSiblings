@@ -24,11 +24,14 @@ public class BufferedInputs {
         }
     }
 
-    public void resetBuffer(string inputName)
+    public void resetBuffer()
     {
-        if (Input.GetButtonDown(inputName))
+        foreach (string k in bufferedInputs.Keys)
         {
-            bufferedInputs[inputName].resetBuffer();
+            if (Input.GetButtonDown(k))
+            {
+                bufferedInputs[k].resetBuffer();
+            }
         }
     }
 

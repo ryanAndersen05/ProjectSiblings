@@ -9,30 +9,29 @@ public class AIStateMachine : MonoBehaviour {
 
     void Start()
     {
-        List<State> validStateList = new List<State>();
+        dictionaryStates = new Dictionary<string, State>();
         foreach (State s in allValidStates)
         {
             State sState = ((GameObject)Instantiate(s.gameObject, Vector3.zero, new Quaternion())).GetComponent<State>();
             sState.transform.parent = this.transform;
             sState.gameObject.SetActive(false);
-            validStateList.Add(sState);
+            dictionaryStates.Add(sState.stateName, sState);
         }
-        
+        changeCurrentState(allValidStates[0].stateName);
     }
-
-    void Update()
-    {
-        currentState.updateState();
-    }
-
 
     public void changeCurrentState(string newStateName)
     {
-        currentState.exitState();
+        if (currentState != null ) currentState.exitState();
         if (dictionaryStates.ContainsKey(newStateName))
         {
             currentState = dictionaryStates[newStateName];
         }
         currentState.enterState(this);
+    }
+
+    public Transform getParent()
+    {
+        return this.transform.parent;
     }
 }

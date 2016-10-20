@@ -34,8 +34,10 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
+        bInputs.resetBuffer();
         updateCurrentPlayer();
         updateAllPlayers();
+        bInputs.updateInputs();
     }
 
     void updateCurrentPlayer()
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour {
         }
         if (jMechanics[currentPlayer] != null)
         {
-            jMechanics[currentPlayer].activateJump(Input.GetButtonDown("Jump"));
+            bInputs.cancelBuffer("Jump", jMechanics[currentPlayer].activateJump(bInputs.isActive("Jump")));
         }
     }
 
@@ -60,10 +62,13 @@ public class PlayerController : MonoBehaviour {
             }
             if (aMechanics[i] != null)
             {
-                aMechanics[i].attack(Input.GetButtonDown("Attack"));
+                aMechanics[i].attack(bInputs.isActive("Attack"));
             }
         }
     }
 
-
+    public Transform getCurrentPlayer()
+    {
+        return playableCharacters[currentPlayer].transform;
+    }
 }
