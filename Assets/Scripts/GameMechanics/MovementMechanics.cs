@@ -65,6 +65,7 @@ public class MovementMechanics : MonoBehaviour {
         {
             anim.SetFloat("Speed", Mathf.Abs(hInput));
         }
+        if (fSprite == null) return;
         if (hInput < 0)
         {
             fSprite.isRight = false;

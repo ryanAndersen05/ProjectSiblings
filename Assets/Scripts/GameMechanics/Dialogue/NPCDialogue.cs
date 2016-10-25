@@ -9,13 +9,18 @@ public class NPCDialogue : MonoBehaviour {
 
     void Start()
     {
+        actionIcon.gameObject.SetActive(false);
         dialogueFileName = "/DialogueScripts/" + dialogueFileName;
     }
 
     void OnTriggerEnter2D (Collider2D collider)
     {
-        allColliders.Add(collider);
-        actionIcon.gameObject.SetActive(true);
+        if (collider.GetComponent<DialoguePlayer>() != null)
+        {
+            allColliders.Add(collider);
+            actionIcon.gameObject.SetActive(true);
+        }
+        
     }
 
     void OnTriggerExit2D (Collider2D collider)
@@ -28,5 +33,15 @@ public class NPCDialogue : MonoBehaviour {
         {
             actionIcon.gameObject.SetActive(false);
         } 
+    }
+
+    public bool getIsActiveDialogue()
+    {
+        return allColliders.Count > 0;
+    }
+
+    public void resetCount()
+    {
+
     }
 }
