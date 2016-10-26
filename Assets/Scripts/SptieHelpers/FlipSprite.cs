@@ -5,6 +5,7 @@ public class FlipSprite : MonoBehaviour {
     public bool isRight = false;
     public bool lockDirection = false;
     public bool useScale = true;
+    public bool isReversed = false;
     bool previousIsRight = false;
     SpriteRenderer spriteRenderer;
 
@@ -29,7 +30,7 @@ public class FlipSprite : MonoBehaviour {
 
     public void updateDirection()
     {
-       
+        spriteRenderer.flipX = isReversed;
         if (isRight)
         {
             if (useScale)

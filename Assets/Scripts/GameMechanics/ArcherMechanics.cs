@@ -31,9 +31,11 @@ public class ArcherMechanics : MonoBehaviour {
         if (bowDown && coolDownTimer <= 0)
         {
             chargeTimer = Mathf.MoveTowards(chargeTimer, maxChargeTime, Time.deltaTime);
+            anim.SetBool("IsCharging", true);
         }
         else if (chargeTimer > 0)
         {
+            print("Happy");
             fireBow();
             coolDownTimer = coolDownTime;
             chargeTimer = 0;
@@ -41,6 +43,7 @@ public class ArcherMechanics : MonoBehaviour {
         else
         {
             chargeTimer = 0;
+            anim.SetBool("IsCharging", false);
         }
     }
 
@@ -51,6 +54,7 @@ public class ArcherMechanics : MonoBehaviour {
 
     void fireBow()
     {
+        print("Hell");
         ProjectileMechanics a = arrows[currentArrow];
         currentArrow = (currentArrow + 1) % totalArrows;
         a.transform.position = launchLocation.position;
@@ -58,6 +62,10 @@ public class ArcherMechanics : MonoBehaviour {
         a.setUpLaunch(a.maxLaunchForce * (.2f + .8f * chargeTimer / maxChargeTime), (transform.localScale.x > 0) ? 180 : 0);
         a.gameObject.SetActive(true);
         a.launchArrow();
+        if (anim != null)
+        {
+            anim.SetTrigger("Fire");
+        }
         
     }
 }
